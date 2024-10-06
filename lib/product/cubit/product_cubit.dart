@@ -11,7 +11,7 @@ class ProductCubit extends Cubit<ProductCubitState>{
     emit(IsLoadingState());
     http.Response response = await http.get(Uri.parse('https://dummyjson.com/products'));
     ProductDataRes productDataRes = ProductDataRes.fromRawJson(response.body);
-    emit(ProductStateUpdate(productDataRes: productDataRes));
+    emit(ProductCubitStateUpdate(productDataRes: productDataRes));
   }
 
 }

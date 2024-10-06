@@ -1,37 +1,37 @@
 import 'package:bloc_and_cubit_pattern/product/model/product_data_res.dart';
 import 'package:equatable/equatable.dart';
 
-abstract class ProductCubitState extends Equatable{}
+abstract class ProductBlocState extends Equatable{}
 
-class ProductInitState extends ProductCubitState{
-
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-
-}
-
-class IsLoadingState extends ProductCubitState{
+class ProductBlocStateInit extends ProductBlocState{
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();
 }
 
-class ProductCubitStateUpdate extends ProductCubitState {
-  final ProductDataRes? productDataRes;
-  ProductCubitStateUpdate({
-    required this.productDataRes
-  });
+class ProductBlocStateIsLoading extends ProductBlocState{
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
+}
+
+class ProductBlocStateUpdate extends ProductBlocState{
+  
+  final ProductDataRes productDataRes;
+  ProductBlocStateUpdate({required this.productDataRes});
 
   @override
   // TODO: implement props
   List<Object?> get props => [
     productDataRes
   ];
-
 }
 
-class ProductErrorState extends ProductCubitState{
+class ProductBlocStateError extends ProductBlocState{
+  ProductBlocStateError({dynamic e}){
+    print("Error: $e");
+  }
+
   @override
   // TODO: implement props
   List<Object?> get props => throw UnimplementedError();

@@ -37,7 +37,7 @@ class _ProductScreenState extends State<ProductScreen> {
               color: Colors.blue,
             ),
           );
-        } else if (state is ProductStateUpdate) {
+        } else if (state is ProductCubitStateUpdate) {
           return ListView.builder(
               itemCount: state.productDataRes?.products?.length,
               itemBuilder: (context, index) => 
