@@ -17,7 +17,7 @@ class ProductBlocStateIsLoading extends ProductBlocState{
 
 class ProductBlocStateUpdate extends ProductBlocState{
   
-  final ProductDataRes productDataRes;
+  final ProductDataRes? productDataRes;
   ProductBlocStateUpdate({required this.productDataRes});
 
   @override

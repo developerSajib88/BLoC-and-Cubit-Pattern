@@ -1,22 +1,24 @@
-import 'package:bloc_and_cubit_pattern/product/cubit/product_cubit.dart';
-import 'package:bloc_and_cubit_pattern/product/cubit/product_cubit_state.dart';
+import 'package:bloc_and_cubit_pattern/product/bloc/product_bloc.dart';
+import 'package:bloc_and_cubit_pattern/product/bloc/product_bloc_event.dart';
+import 'package:bloc_and_cubit_pattern/product/bloc/product_bloc_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductScreen extends StatefulWidget {
-  const ProductScreen({super.key});
+class ProductScreenBloc extends StatefulWidget {
+  const ProductScreenBloc({super.key});
 
   @override
-  State<ProductScreen> createState() => _ProductScreenState();
+  State<ProductScreenBloc> createState() => _ProductScreenCubitState();
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ProductScreenCubitState extends State<ProductScreenBloc> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<ProductCubit>().getProduct();
+    context.read<ProductBloc>().add(GetProductData());
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +31,15 @@ class _ProductScreenState extends State<ProductScreen> {
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
-      body: BlocBuilder<ProductCubit, ProductCubitState>(
+      body: BlocBuilder<ProductBloc, ProductBlocState>(
           builder: (context, state) {
-        if (state is IsLoadingState) {
+        if (state is ProductBlocStateIsLoading) {
           return const Center(
             child: CircularProgressIndicator(
               color: Colors.blue,
             ),
           );
-        } else if (state is ProductCubitStateUpdate) {
+        } else if (state is ProductBlocStateUpdate) {
           return ListView.builder(
               itemCount: state.productDataRes?.products?.length,
               itemBuilder: (context, index) => 
